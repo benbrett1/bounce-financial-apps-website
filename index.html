@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bounce Financial Apps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -17,17 +20,17 @@
       --orange: #f68b1f;
       --magenta: #ee3780;
       --bg: #ffffff;
-      --surface: #f9f9f9;
-      --surface-hover: #f2f2f2;
+      --surface: #fafafa;
+      --surface-hover: #f4f4f4;
       --border: #e8e8e8;
       --text-primary: #1a1a1a;
       --text-secondary: #555555;
       --text-muted: #999999;
-      --radius: 14px;
+      --radius: 12px;
     }
 
     html {
-      font-family: 'Avenir Next', 'Avenir', 'Century Gothic', 'Trebuchet MS', sans-serif;
+      font-family: 'Poppins', 'Avenir Next', 'Century Gothic', 'Trebuchet MS', sans-serif;
       background: var(--bg);
       color: var(--text-primary);
       min-height: 100vh;
@@ -42,31 +45,31 @@
 
     /* ── Header ── */
     header {
-      padding: 28px 48px;
+      padding: 18px 40px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 20px;
     }
 
     .logo-lockup {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
-    /* Simplified Bounce logo mark — three stacked bars like the B icon */
     .logo-mark {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 4px;
-      width: 36px;
+      gap: 3px;
+      width: 26px;
     }
 
     .logo-mark span {
       display: block;
-      height: 4px;
+      height: 3px;
       border-radius: 2px;
       background: var(--yellow);
     }
@@ -76,272 +79,167 @@
     .logo-mark span:nth-child(3) { width: 100%; }
 
     .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
-
-    .logo-text .brand {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
       color: var(--text-primary);
     }
 
-    .logo-text .sub {
-      font-size: 11px;
+    .logo-text span {
+      color: var(--text-muted);
       font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
     }
 
-    /* ── Hero ── */
-    .hero {
-      padding: 80px 48px 56px;
-      max-width: 800px;
-      width: 100%;
-    }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(36px, 5.5vw, 58px);
-      font-weight: 300;
-      letter-spacing: -1px;
-      line-height: 1.08;
-      color: var(--text-primary);
-      margin-bottom: 24px;
-    }
-
-    h1 strong {
-      font-weight: 700;
+    /* ── Search ── */
+    .search-wrap {
+      margin-left: auto;
       position: relative;
-      display: inline-block;
+      width: 320px;
+      max-width: 40vw;
     }
 
-    h1 strong::after {
-      content: '';
+    .search-wrap svg {
       position: absolute;
-      bottom: 2px;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: var(--yellow);
-      z-index: -1;
-      border-radius: 2px;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--text-muted);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
     }
 
-    .hero-desc {
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 480px;
+    #search {
+      width: 100%;
+      font: inherit;
+      font-size: 14px;
+      padding: 9px 12px 9px 36px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
 
-    /* ── Yellow divider ── */
-    .divider {
-      width: 48px;
-      height: 4px;
-      background: var(--yellow);
-      border-radius: 2px;
-      margin: 0 48px 48px;
+    #search:focus {
+      border-color: var(--yellow);
+      background: var(--bg);
     }
+
+    #search::placeholder { color: var(--text-muted); }
 
     /* ── App Grid ── */
     .grid-section {
       flex: 1;
-      padding: 0 48px 80px;
-      max-width: 1100px;
+      padding: 32px 40px 64px;
       width: 100%;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+      max-width: 1400px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
     }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
+      padding: 16px 18px;
       text-decoration: none;
       color: inherit;
       display: flex;
-      flex-direction: column;
-      gap: 18px;
-      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
+      align-items: center;
+      gap: 14px;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .card:hover {
+    a.card:hover {
       background: var(--surface-hover);
       border-color: var(--yellow);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
     }
-
-    .card-accent {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .card:hover .card-accent {
-      opacity: 1;
-    }
-
-    .card:nth-child(1) .card-accent { background: var(--yellow); }
-    .card:nth-child(2) .card-accent { background: var(--orange); }
-    .card:nth-child(3) .card-accent { background: var(--magenta); }
-    .card:nth-child(4) .card-accent { background: var(--yellow); }
-    .card:nth-child(5) .card-accent { background: var(--orange); }
-    .card:nth-child(6) .card-accent { background: var(--magenta); }
-    .card:nth-child(7) .card-accent { background: var(--yellow); }
-    .card:nth-child(8) .card-accent { background: var(--orange); }
 
     .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .card:nth-child(1) .card-icon { background: rgba(255, 202, 56, 0.15); }
-    .card:nth-child(2) .card-icon { background: rgba(246, 139, 31, 0.15); }
-    .card:nth-child(3) .card-icon { background: rgba(238, 55, 128, 0.15); }
-    .card:nth-child(4) .card-icon { background: rgba(255, 202, 56, 0.15); }
-    .card:nth-child(5) .card-icon { background: rgba(246, 139, 31, 0.15); }
-    .card:nth-child(6) .card-icon { background: rgba(238, 55, 128, 0.15); }
-    .card:nth-child(7) .card-icon { background: rgba(255, 202, 56, 0.15); }
-    .card:nth-child(8) .card-icon { background: rgba(246, 139, 31, 0.15); }
-
     .card-icon svg {
-      width: 22px;
-      height: 22px;
+      width: 19px;
+      height: 19px;
       fill: none;
       stroke-width: 1.75;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    .card:nth-child(1) .card-icon svg { stroke: var(--yellow-dark); }
-    .card:nth-child(2) .card-icon svg { stroke: var(--orange); }
-    .card:nth-child(3) .card-icon svg { stroke: var(--magenta); }
-    .card:nth-child(4) .card-icon svg { stroke: var(--yellow-dark); }
-    .card:nth-child(5) .card-icon svg { stroke: var(--orange); }
-    .card:nth-child(6) .card-icon svg { stroke: var(--magenta); }
-    .card:nth-child(7) .card-icon svg { stroke: var(--yellow-dark); }
-    .card:nth-child(8) .card-icon svg { stroke: var(--orange); }
-
-    .card-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .card:nth-child(3n+1) .card-icon { background: rgba(255, 202, 56, 0.16); }
+    .card:nth-child(3n+1) .card-icon svg { stroke: var(--yellow-dark); }
+    .card:nth-child(3n+2) .card-icon { background: rgba(246, 139, 31, 0.14); }
+    .card:nth-child(3n+2) .card-icon svg { stroke: var(--orange); }
+    .card:nth-child(3n+3) .card-icon { background: rgba(238, 55, 128, 0.12); }
+    .card:nth-child(3n+3) .card-icon svg { stroke: var(--magenta); }
 
     .card-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.2px;
-    }
-
-    .card-desc {
       font-size: 14px;
-      font-weight: 400;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .card-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 13px;
       font-weight: 600;
       color: var(--text-primary);
-      margin-top: 6px;
-      letter-spacing: 0.2px;
+      letter-spacing: -0.1px;
+      line-height: 1.35;
     }
 
-    .card-cta svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transition: transform 0.18s ease;
+    /* ── Coming soon ── */
+    .card.soon {
+      cursor: default;
+      opacity: 0.5;
     }
 
-    .card:hover .card-cta svg {
-      transform: translateX(4px);
+    .card.soon .badge {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── Empty state ── */
+    .empty {
+      display: none;
+      padding: 40px 4px;
+      font-size: 14px;
+      color: var(--text-muted);
     }
 
     /* ── Footer ── */
     footer {
-      padding: 28px 48px;
+      padding: 20px 40px;
       border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-brand {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .footer-copy {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
     }
 
     /* ── Responsive ── */
     @media (max-width: 640px) {
-      header { padding: 20px 24px; }
-      .hero { padding: 48px 24px 36px; }
-      .divider { margin: 0 24px 36px; }
-      .grid-section { padding: 0 24px 56px; }
-      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
+      header { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
+      .search-wrap { max-width: 100%; width: 100%; margin-left: 0; }
+      .grid-section { padding: 20px 20px 48px; }
       .grid { grid-template-columns: 1fr; }
+      footer { padding: 16px 20px; }
     }
   </style>
 </head>
@@ -354,181 +252,120 @@
         <span></span>
         <span></span>
       </div>
-      <div class="logo-text">
-        <span class="brand">Bounce Financial</span>
-        <span class="sub">Apps</span>
-      </div>
+      <div class="logo-text">Bounce Financial <span>Apps</span></div>
+    </div>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search apps…" autocomplete="off" autofocus />
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1><strong>Financial Tools</strong></h1>
-    </section>
+  <main class="grid-section">
+    <div class="grid" id="grid">
 
-    <div class="divider"></div>
+      <a class="card" href="https://bounce-asset-allocation-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <div class="card-title">Asset Allocation Calculator</div>
+      </a>
 
-    <section class="grid-section">
-      <p class="section-label">All Apps</p>
-      <div class="grid">
+      <a class="card" href="https://bounce-budget-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 10h8M8 14h5"/><path d="M6 7h.01"/></svg>
+        </div>
+        <div class="card-title">Budget Calculator</div>
+      </a>
 
-        <a class="card" href="https://bounce-budget-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="3" width="20" height="18" rx="2"/>
-              <path d="M8 10h8M8 14h5"/>
-              <path d="M6 7h.01"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Budget Calculator</div>
-            <div class="card-desc">Budget Calculator for inclusion in your Statement of Advice.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
+      <a class="card" href="https://bounce-cashflow-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="card-title">Cashflow Calculator</div>
+      </a>
 
-        <a class="card" href="https://retirement-projections.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 17l4-8 4 4 4-6 4 8"/>
-              <path d="M3 20h18"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Retirement Projections</div>
-            <div class="card-desc">Calculate Retirement Projections for the Annual Progress Report.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
+      <a class="card" href="https://investment-property-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <div class="card-title">Investment Property Calculator</div>
+      </a>
 
-        <a class="card" href="https://benbrett1.github.io/school-year-calculator/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">School Year Calculator</div>
-            <div class="card-desc">Calculate school years for any advice.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
+      <a class="card" href="https://retirement-projections.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 17l4-8 4 4 4-6 4 8"/><path d="M3 20h18"/></svg>
+        </div>
+        <div class="card-title">Retirement Projections</div>
+      </a>
 
-        <a class="card" href="https://bounce-asset-allocation-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 12a9 9 0 1 1-9-9"/>
-              <path d="M21 3v6h-6"/>
-              <path d="M12 7v5l3 3"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Asset Allocation Calculator</div>
-            <div class="card-desc">Calculate and optimise your investment asset allocation across different asset classes.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
+      <a class="card" href="https://benbrett1.github.io/school-year-calculator/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="card-title">School Year Calculator</div>
+      </a>
 
-        <a class="card" href="https://investment-property-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <path d="M9 22V12h6v10"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Investment Property Calculator</div>
-            <div class="card-desc">Analyse rental yield, cash flow, and return on investment for your property portfolio.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
+      <a class="card" href="https://streaming-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/><circle cx="17" cy="18" r="3"/><path d="M17 15v3l2 1"/></svg>
+        </div>
+        <div class="card-title">Streaming Calculator</div>
+      </a>
 
-        <a class="card" href="https://streaming-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 6h16M4 12h16M4 18h7"/>
-              <circle cx="17" cy="18" r="3"/>
-              <path d="M17 15v3l2 1"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Streaming Calculator</div>
-            <div class="card-desc">Calculate the cost of all streaming platforms for the budget calculator.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-
-        <a class="card" href="https://bounce-cashflow-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Cashflow Calculator</div>
-            <div class="card-desc">Model your income and expenses to understand your monthly cashflow position.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-
-        <a class="card" href="https://bounce-financial-net-worth-calculator.netlify.app/" target="_blank" rel="noopener noreferrer">
-          <div class="card-accent"></div>
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="7" width="20" height="14" rx="2"/>
-              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-              <line x1="12" y1="12" x2="12" y2="16"/>
-              <line x1="10" y1="14" x2="14" y2="14"/>
-            </svg>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Net Worth Calculator</div>
-            <div class="card-desc">Coming Soon.</div>
-            <div class="card-cta">
-              Open app
-              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-
+      <div class="card soon">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <div>
+          <div class="card-title">Net Worth Calculator</div>
+          <div class="badge">Coming soon</div>
+        </div>
       </div>
-    </section>
+
+    </div>
+    <p class="empty" id="empty">No apps match “<span id="empty-term"></span>”.</p>
   </main>
 
   <footer>
-    <span class="footer-brand">Bounce Financial</span>
-    <span class="footer-copy">&copy; 2026 Bounce Financial. All rights reserved.</span>
+    Bounce Financial — Australian Financial Services Licence No. 529109
   </footer>
+
+  <script>
+    (function () {
+      var search = document.getElementById('search');
+      var cards = Array.prototype.slice.call(document.querySelectorAll('#grid .card'));
+      var empty = document.getElementById('empty');
+      var emptyTerm = document.getElementById('empty-term');
+
+      function apply() {
+        var q = search.value.trim().toLowerCase();
+        var shown = 0;
+        cards.forEach(function (card) {
+          var name = card.querySelector('.card-title').textContent.toLowerCase();
+          var match = name.indexOf(q) !== -1;
+          card.style.display = match ? '' : 'none';
+          if (match) shown++;
+        });
+        empty.style.display = shown === 0 ? 'block' : 'none';
+        emptyTerm.textContent = search.value.trim();
+      }
+
+      search.addEventListener('input', apply);
+
+      // "/" focuses search from anywhere
+      document.addEventListener('keydown', function (e) {
+        if (e.key === '/' && document.activeElement !== search) {
+          e.preventDefault();
+          search.focus();
+        }
+        if (e.key === 'Escape' && document.activeElement === search) {
+          search.value = '';
+          apply();
+          search.blur();
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
